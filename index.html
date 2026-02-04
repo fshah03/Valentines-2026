@@ -1,234 +1,231 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>For My Megha 💖</title>
+<title>For Megha 💖</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins&display=swap" rel="stylesheet">
 
 <style>
 
 /* RESET */
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins}
 
+/* BODY */
 body{
-    background:black;
-    color:white;
-    overflow-x:hidden;
-}
-
-/* BACKGROUND EFFECTS */
-
-.stars, .hearts{
-    position:fixed;
-    width:100%;
-    height:100%;
-    pointer-events:none;
-    z-index:-1;
-}
-
-.stars{
-    background:
-    radial-gradient(2px 2px at 20% 30%, white, transparent),
-    radial-gradient(2px 2px at 80% 40%, white, transparent),
-    radial-gradient(1px 1px at 50% 80%, white, transparent);
-    background-size:200px 200px;
-    animation: starsMove 60s linear infinite;
-}
-
-@keyframes starsMove{
-    from{background-position:0 0;}
-    to{background-position:2000px 2000px;}
-}
-
-.hearts span{
-    position:absolute;
-    color:pink;
-    font-size:20px;
-    animation: float 8s linear infinite;
-}
-
-@keyframes float{
-    0%{transform:translateY(100vh);opacity:0;}
-    20%{opacity:1;}
-    100%{transform:translateY(-100vh);opacity:0;}
-}
-
-/* COMMON */
-
-section{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:40px;
+background:#000;
+color:white;
+overflow:hidden;
 }
 
 /* MUSIC */
+audio{display:none}
 
-audio{display:none;}
-
-/* ANNIVERSARY */
-
-#anniversary{
-    background:linear-gradient(135deg,#2b0040,#5a189a,#ffb703);
+/* SCREENS */
+.screen{
+width:100vw;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+position:absolute;
+top:0;
+left:0;
 }
 
-.anniv-wrap{
-    max-width:900px;
-    padding:60px;
-    background:rgba(0,0,0,0.6);
-    border:3px solid gold;
-    border-radius:30px;
-    box-shadow:0 0 50px gold;
-    animation:fadeIn 2s ease;
+/* ================= ENVELOPE ================= */
+
+#envelopeScreen{
+background:linear-gradient(135deg,#12002f,#3a0ca3,#7209b7);
+flex-direction:column;
 }
 
-@keyframes fadeIn{
-    from{opacity:0;transform:translateY(30px);}
-    to{opacity:1;transform:translateY(0);}
+.envelope{
+width:320px;
+height:200px;
+background:#f5deb3;
+position:relative;
+cursor:pointer;
+border-radius:10px;
+box-shadow:0 0 30px gold;
+transition:.5s;
 }
 
-.anniv-wrap h1{
-    font-family:'Great Vibes',cursive;
-    font-size:65px;
-    color:gold;
+.envelope:before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(45deg,transparent 50%,#e0c68c 50%);
+clip-path:polygon(0 0,100% 0,50% 60%);
 }
 
-.photo-frame{
-    width:240px;
-    height:240px;
-    margin:30px auto;
-    border-radius:50%;
-    border:6px solid gold;
-    overflow:hidden;
-    box-shadow:0 0 30px gold;
+.envelopeText{
+margin-top:20px;
+font-size:20px;
+opacity:.8;
 }
 
-.photo-frame img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
+/* LETTER */
+
+#letter{
+display:none;
+background:rgba(0,0,0,.7);
+border:3px solid gold;
+border-radius:25px;
+padding:50px;
+width:80%;
+max-width:700px;
+animation:openLetter 2s forwards;
 }
 
-.letter{
-    font-size:18px;
-    line-height:1.8;
-    margin-top:20px;
+@keyframes openLetter{
+from{transform:scale(.2);opacity:0}
+to{transform:scale(1);opacity:1}
 }
 
-.next-btn{
-    margin-top:30px;
-    padding:14px 35px;
-    background:gold;
-    border:none;
-    border-radius:30px;
-    font-size:18px;
-    font-weight:bold;
-    cursor:pointer;
+#letter h1{
+font-family:Great Vibes;
+font-size:60px;
+color:gold;
 }
 
-/* VALENTINE */
-
-#valentine{
-    display:none;
-    background:linear-gradient(135deg,#ff4d6d,#ff85a1,#ffc2d1);
+#letter img{
+width:200px;
+height:200px;
+border-radius:50%;
+border:5px solid gold;
+margin:20px 0;
+object-fit:cover;
 }
 
-.val-wrap{
-    background:rgba(255,255,255,0.15);
-    backdrop-filter:blur(10px);
-    padding:60px;
-    border-radius:30px;
-    box-shadow:0 0 40px pink;
-    position:relative;
+#letter p{
+line-height:1.8;
+margin-top:15px;
 }
 
-.val-wrap h1{
-    font-size:48px;
+.nextBtn{
+margin-top:25px;
+padding:12px 35px;
+border:none;
+background:gold;
+border-radius:30px;
+font-size:18px;
+cursor:pointer;
 }
 
-.back-btn{
-    position:absolute;
-    top:15px;
-    left:20px;
-    background:none;
-    border:none;
-    color:white;
-    font-size:16px;
-    cursor:pointer;
+/* ================= VALENTINE ================= */
+
+#valentineScreen{
+display:none;
+background:linear-gradient(135deg,#ff2a68,#ff5c8a,#ff99ac);
+overflow:hidden;
 }
 
-.btns{
-    margin-top:35px;
+/* Hearts */
+.heart{
+position:absolute;
+font-size:24px;
+animation:float 8s linear infinite;
+}
+
+@keyframes float{
+0%{bottom:-50px;opacity:0}
+20%{opacity:1}
+100%{bottom:110%;opacity:0}
+}
+
+/* VAL BOX */
+
+.valBox{
+background:rgba(255,255,255,.15);
+backdrop-filter:blur(15px);
+padding:70px;
+border-radius:35px;
+box-shadow:0 0 60px pink;
+z-index:10;
+}
+
+.valBox h1{
+font-size:50px;
+}
+
+.buttons{
+margin-top:30px;
 }
 
 button{
-    padding:12px 28px;
-    border:none;
-    border-radius:25px;
-    font-size:18px;
-    cursor:pointer;
+padding:12px 28px;
+border:none;
+border-radius:25px;
+font-size:18px;
+cursor:pointer;
 }
 
 #yes{
-    background:#4CAF50;
-    color:white;
+background:#4CAF50;
+color:white;
 }
 
 #no{
-    background:#f44336;
-    color:white;
-    position:absolute;
+background:#f44336;
+color:white;
+position:absolute;
 }
 
-/* RESPONSE */
-
-#response{
-    display:none;
-    background:linear-gradient(135deg,#7209b7,#f72585);
-}
-
-.res-wrap{
-    background:rgba(0,0,0,0.6);
-    padding:50px;
-    border-radius:30px;
-}
-
-textarea{
-    width:100%;
-    height:130px;
-    border-radius:10px;
-    padding:10px;
-    margin-top:15px;
-    font-size:16px;
-}
-
-.send-btn{
-    margin-top:20px;
-    background:gold;
-    font-weight:bold;
+.back{
+position:absolute;
+top:20px;
+left:20px;
+background:none;
+color:white;
+border:none;
+font-size:16px;
+cursor:pointer;
 }
 
 /* POPUP */
 
-.popup{
-    position:fixed;
-    top:20%;
-    left:50%;
-    transform:translateX(-50%);
-    background:rgba(0,0,0,0.8);
-    padding:15px 25px;
-    border-radius:20px;
-    display:none;
-    font-size:16px;
-    z-index:99;
+#popup{
+position:fixed;
+top:15%;
+left:50%;
+transform:translateX(-50%);
+background:rgba(0,0,0,.8);
+padding:15px 25px;
+border-radius:20px;
+display:none;
+z-index:99;
+}
+
+/* ================= RESPONSE ================= */
+
+#responseScreen{
+display:none;
+background:linear-gradient(135deg,#7209b7,#f72585);
+}
+
+.resBox{
+background:rgba(0,0,0,.6);
+padding:50px;
+border-radius:30px;
+}
+
+textarea{
+width:100%;
+height:120px;
+margin-top:15px;
+border-radius:10px;
+padding:10px;
+}
+
+.send{
+margin-top:20px;
+background:gold;
+font-weight:bold;
 }
 
 </style>
@@ -236,179 +233,191 @@ textarea{
 
 <body>
 
-<div class="stars"></div>
-<div class="hearts" id="hearts"></div>
-
-<div class="popup" id="popup"></div>
-
 <audio id="music" loop>
-<source src="love-song.mp3" type="audio/mpeg">
+<source src="love-song.mp3">
 </audio>
 
-<!-- ANNIVERSARY -->
+<div id="popup"></div>
 
-<section id="anniversary">
+<!-- ENVELOPE -->
 
-<div class="anniv-wrap">
+<div class="screen" id="envelopeScreen">
+
+<div class="envelope" onclick="openLetter()"></div>
+
+<div class="envelopeText">
+Tap to open your letter 💌
+</div>
+
+<div id="letter">
 
 <h1>Happy 1st Anniversary ❤️</h1>
 
-<div class="photo-frame">
 <img src="photo.jpg">
+
+<p>
+
+My love, Megha 💖,<br><br>
+
+This past year with you has been filled with love,
+laughter, comfort, and memories I will cherish forever.
+You are my happiness and my home. 💍✨<br><br>
+
+I can’t wait for our dinner on February 7th
+and for every beautiful moment ahead. ❤️
+
+</p>
+
+<button class="nextBtn" onclick="goValentine()">This Is Not All… 💫</button>
+
 </div>
 
-<div class="letter">
-
-My dearest Megha 💖,<br><br>
-
-One year with you has been filled with love, laughter,
-and countless memories that I will cherish forever.
-You are my happiness, my comfort, and my greatest blessing. 💍✨<br><br>
-
-I’m so excited for our special dinner on February 7th,
-and for every beautiful moment that’s still waiting for us. ❤️
-
 </div>
 
-<button class="next-btn" onclick="goValentine()">This Is Not All… 💫</button>
-
-</div>
-
-</section>
 
 <!-- VALENTINE -->
 
-<section id="valentine">
+<div class="screen" id="valentineScreen">
 
-<div class="val-wrap">
+<button class="back" onclick="goBack()">⬅ Back</button>
 
-<button class="back-btn" onclick="goBack()">⬅ Back</button>
+<div class="valBox">
 
 <h1>Megha 💘</h1>
 <h2>Will You Be My Valentine?</h2>
 
-<div class="btns">
+<div class="buttons">
 <button id="yes" onclick="yesClick()">Yes 😍</button>
 <button id="no" onmouseover="moveNo()">No 🙈</button>
 </div>
 
 </div>
 
-</section>
+</div>
+
 
 <!-- RESPONSE -->
 
-<section id="response">
+<div class="screen" id="responseScreen">
 
-<div class="res-wrap">
+<div class="resBox">
 
 <h1>I Knew It!!! 😍💖</h1>
 
-<p>What would you like to do on Valentine’s Day?</p>
+<p>What do you want to do on Valentine’s?</p>
 
-<textarea id="msg" placeholder="Tell me, my love... 💌"></textarea>
+<textarea id="msg"></textarea>
 
 <br>
 
-<button class="send-btn" onclick="sendMsg()">Send to Me 💖</button>
+<button class="send" onclick="sendMsg()">Send 💌</button>
 
 </div>
 
-</section>
+</div>
+
 
 <script>
 
 const music = document.getElementById("music");
 const popup = document.getElementById("popup");
 
-const noTexts = [
-"Heyyy 😳 Not so fast!",
-"No is feeling shy 🙈",
-"Come onnn 🥺💖",
-"You’re stuck with me 😘",
-"Nice try 😏❤️"
+const noTexts=[
+"Heyyy 😳",
+"No is shy 🙈",
+"Nice try 😏",
+"Come onnn 🥺",
+"You love me 😘",
+"Not allowed 😤❤️"
 ];
 
-function showPopup(text){
-    popup.innerText = text;
-    popup.style.display="block";
+/* Envelope */
 
-    setTimeout(()=>{
-        popup.style.display="none";
-    },1500);
+function openLetter(){
+document.querySelector(".envelope").style.display="none";
+document.querySelector(".envelopeText").style.display="none";
+document.getElementById("letter").style.display="block";
+music.play();
 }
 
-/* HEARTS */
-
-function createHearts(){
-    const heart = document.createElement("span");
-    heart.innerHTML="💖";
-    heart.style.left = Math.random()*100+"%";
-    heart.style.fontSize = (15+Math.random()*25)+"px";
-    heart.style.animationDuration = (5+Math.random()*5)+"s";
-
-    document.getElementById("hearts").appendChild(heart);
-
-    setTimeout(()=>heart.remove(),8000);
-}
-
-setInterval(createHearts,400);
-
-/* NAVIGATION */
+/* Navigation */
 
 function goValentine(){
-    document.getElementById("anniversary").style.display="none";
-    document.getElementById("valentine").style.display="flex";
-    music.play();
+document.getElementById("envelopeScreen").style.display="none";
+document.getElementById("valentineScreen").style.display="flex";
 }
 
 function goBack(){
-    document.getElementById("valentine").style.display="none";
-    document.getElementById("anniversary").style.display="flex";
+document.getElementById("valentineScreen").style.display="none";
+document.getElementById("envelopeScreen").style.display="flex";
 }
 
-/* BUTTONS */
+/* Hearts */
+
+function spawnHeart(){
+const h=document.createElement("div");
+h.className="heart";
+h.innerHTML="💖";
+h.style.left=Math.random()*100+"%";
+h.style.animationDuration=(5+Math.random()*5)+"s";
+document.body.appendChild(h);
+
+setTimeout(()=>h.remove(),8000);
+}
+
+setInterval(spawnHeart,400);
+
+/* No Button */
 
 function moveNo(){
 
-    const btn = document.getElementById("no");
+const btn=document.getElementById("no");
 
-    const x = Math.random()*(window.innerWidth-120);
-    const y = Math.random()*(window.innerHeight-120);
+const x=Math.random()*(window.innerWidth-120);
+const y=Math.random()*(window.innerHeight-120);
 
-    btn.style.left = x+"px";
-    btn.style.top = y+"px";
+btn.style.left=x+"px";
+btn.style.top=y+"px";
 
-    const text = noTexts[Math.floor(Math.random()*noTexts.length)];
-    showPopup(text);
+const msg=noTexts[Math.floor(Math.random()*noTexts.length)];
+showPopup(msg);
 }
+
+function showPopup(t){
+popup.innerText=t;
+popup.style.display="block";
+
+setTimeout(()=>{
+popup.style.display="none";
+},1200);
+}
+
+/* Yes */
 
 function yesClick(){
 
-    showPopup("I knew it!!! 💖😍");
+showPopup("I knew it!!! 💖😍");
 
-    setTimeout(()=>{
-        document.getElementById("valentine").style.display="none";
-        document.getElementById("response").style.display="flex";
-    },1200);
+setTimeout(()=>{
+document.getElementById("valentineScreen").style.display="none";
+document.getElementById("responseScreen").style.display="flex";
+},1200);
 }
 
-/* SEND */
+/* Send */
 
 function sendMsg(){
 
-    const text = document.getElementById("msg").value;
+const t=document.getElementById("msg").value;
 
-    if(text.trim()==""){
-        alert("Write something first ❤️");
-        return;
-    }
+if(!t.trim()){
+alert("Write something ❤️");
+return;
+}
 
-    const email =
-    "fiyuusa@gmail.com?subject=Megha's Valentine Reply 💖&body="
-    + encodeURIComponent(text);
-
-    window.location.href = email;
+window.location.href=
+"mailto:fiyuusa@gmail.com?subject=Megha 💖&body="+
+encodeURIComponent(t);
 }
 
 </script>
