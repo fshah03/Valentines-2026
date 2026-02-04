@@ -13,7 +13,7 @@
 
 /* BODY */
 body{
-background:#000;
+background:black;
 color:white;
 overflow:hidden;
 }
@@ -21,7 +21,7 @@ overflow:hidden;
 /* MUSIC */
 audio{display:none}
 
-/* SCREENS */
+/* SCREEN */
 .screen{
 width:100vw;
 height:100vh;
@@ -34,22 +34,53 @@ top:0;
 left:0;
 }
 
-/* ================= ENVELOPE ================= */
+/* BACKGROUND STARS */
+
+.stars{
+position:absolute;
+width:100%;
+height:100%;
+background:
+radial-gradient(2px 2px at 20% 30%,white,transparent),
+radial-gradient(2px 2px at 80% 40%,white,transparent),
+radial-gradient(1px 1px at 60% 70%,white,transparent),
+radial-gradient(1px 1px at 10% 90%,white,transparent);
+background-size:200px 200px;
+animation:stars 80s linear infinite;
+}
+
+@keyframes stars{
+from{background-position:0 0}
+to{background-position:2000px 2000px}
+}
+
+/* ================= ANNIVERSARY ================= */
 
 #envelopeScreen{
 background:linear-gradient(135deg,#12002f,#3a0ca3,#7209b7);
 flex-direction:column;
+overflow:hidden;
+}
+
+.spotlight{
+position:absolute;
+width:500px;
+height:500px;
+background:radial-gradient(circle,rgba(255,215,0,.4),transparent);
+top:20%;
+left:50%;
+transform:translateX(-50%);
 }
 
 .envelope{
-width:320px;
-height:200px;
-background:#f5deb3;
-position:relative;
+width:340px;
+height:220px;
+background:#f7e7b4;
+border-radius:12px;
+box-shadow:0 0 40px gold;
 cursor:pointer;
-border-radius:10px;
-box-shadow:0 0 30px gold;
-transition:.5s;
+position:relative;
+z-index:5;
 }
 
 .envelope:before{
@@ -59,43 +90,41 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:linear-gradient(45deg,transparent 50%,#e0c68c 50%);
+background:#e6c87a;
 clip-path:polygon(0 0,100% 0,50% 60%);
 }
 
 .envelopeText{
 margin-top:20px;
-font-size:20px;
 opacity:.8;
 }
-
-/* LETTER */
 
 #letter{
 display:none;
 background:rgba(0,0,0,.7);
 border:3px solid gold;
-border-radius:25px;
+border-radius:30px;
 padding:50px;
-width:80%;
-max-width:700px;
-animation:openLetter 2s forwards;
+max-width:750px;
+animation:open 1.5s ease forwards;
+box-shadow:0 0 50px gold;
+z-index:10;
 }
 
-@keyframes openLetter{
-from{transform:scale(.2);opacity:0}
+@keyframes open{
+from{transform:scale(.3);opacity:0}
 to{transform:scale(1);opacity:1}
 }
 
 #letter h1{
 font-family:Great Vibes;
-font-size:60px;
+font-size:65px;
 color:gold;
 }
 
 #letter img{
-width:200px;
-height:200px;
+width:210px;
+height:210px;
 border-radius:50%;
 border:5px solid gold;
 margin:20px 0;
@@ -104,14 +133,13 @@ object-fit:cover;
 
 #letter p{
 line-height:1.8;
-margin-top:15px;
 }
 
 .nextBtn{
 margin-top:25px;
 padding:12px 35px;
-border:none;
 background:gold;
+border:none;
 border-radius:30px;
 font-size:18px;
 cursor:pointer;
@@ -121,40 +149,53 @@ cursor:pointer;
 
 #valentineScreen{
 display:none;
-background:linear-gradient(135deg,#ff2a68,#ff5c8a,#ff99ac);
+background:linear-gradient(135deg,#050b2c,#1b1464,#3a0ca3);
 overflow:hidden;
 }
 
-/* Hearts */
-.heart{
+.moon{
 position:absolute;
-font-size:24px;
-animation:float 8s linear infinite;
+top:10%;
+right:15%;
+width:120px;
+height:120px;
+border-radius:50%;
+background:radial-gradient(circle,#fff,#ddd);
+box-shadow:0 0 40px white;
 }
 
-@keyframes float{
-0%{bottom:-50px;opacity:0}
-20%{opacity:1}
-100%{bottom:110%;opacity:0}
+.cloud{
+position:absolute;
+width:300px;
+height:80px;
+background:rgba(255,255,255,.1);
+border-radius:50px;
+filter:blur(20px);
+animation:clouds 60s linear infinite;
 }
 
-/* VAL BOX */
+@keyframes clouds{
+from{left:-400px}
+to{left:110%}
+}
 
-.valBox{
-background:rgba(255,255,255,.15);
+.valCard{
+background:rgba(255,255,255,.12);
 backdrop-filter:blur(15px);
 padding:70px;
 border-radius:35px;
-box-shadow:0 0 60px pink;
+box-shadow:0 0 60px rgba(255,105,180,.6);
 z-index:10;
+position:relative;
+min-width:320px;
 }
 
-.valBox h1{
-font-size:50px;
-}
+.valCard h1{font-size:48px}
 
 .buttons{
-margin-top:30px;
+margin-top:35px;
+position:relative;
+height:60px;
 }
 
 button{
@@ -174,6 +215,8 @@ color:white;
 background:#f44336;
 color:white;
 position:absolute;
+right:0;
+top:0;
 }
 
 .back{
@@ -181,37 +224,23 @@ position:absolute;
 top:20px;
 left:20px;
 background:none;
-color:white;
 border:none;
-font-size:16px;
+color:white;
 cursor:pointer;
-}
-
-/* POPUP */
-
-#popup{
-position:fixed;
-top:15%;
-left:50%;
-transform:translateX(-50%);
-background:rgba(0,0,0,.8);
-padding:15px 25px;
-border-radius:20px;
-display:none;
-z-index:99;
 }
 
 /* ================= RESPONSE ================= */
 
 #responseScreen{
 display:none;
-background:linear-gradient(135deg,#7209b7,#f72585);
+background:linear-gradient(135deg,#1b1464,#7209b7,#f72585);
 }
 
 .resBox{
 background:rgba(0,0,0,.6);
 padding:50px;
 border-radius:30px;
+position:relative;
 }
 
 textarea{
@@ -228,10 +257,26 @@ background:gold;
 font-weight:bold;
 }
 
+/* POPUP */
+
+#popup{
+position:fixed;
+top:15%;
+left:50%;
+transform:translateX(-50%);
+background:rgba(0,0,0,.8);
+padding:15px 25px;
+border-radius:20px;
+display:none;
+z-index:99;
+}
+
 </style>
 </head>
 
 <body>
+
+<div class="stars"></div>
 
 <audio id="music" loop>
 <source src="love-song.mp3">
@@ -239,15 +284,15 @@ font-weight:bold;
 
 <div id="popup"></div>
 
-<!-- ENVELOPE -->
+<!-- ANNIVERSARY -->
 
 <div class="screen" id="envelopeScreen">
 
+<div class="spotlight"></div>
+
 <div class="envelope" onclick="openLetter()"></div>
 
-<div class="envelopeText">
-Tap to open your letter 💌
-</div>
+<div class="envelopeText">Tap to open 💌</div>
 
 <div id="letter">
 
@@ -260,11 +305,11 @@ Tap to open your letter 💌
 My love, Megha 💖,<br><br>
 
 This past year with you has been filled with love,
-laughter, comfort, and memories I will cherish forever.
+comfort, laughter, and memories I’ll treasure forever.
 You are my happiness and my home. 💍✨<br><br>
 
-I can’t wait for our dinner on February 7th
-and for every beautiful moment ahead. ❤️
+I’m so excited for our dinner on February 7th
+and for everything beautiful ahead. ❤️
 
 </p>
 
@@ -274,27 +319,30 @@ and for every beautiful moment ahead. ❤️
 
 </div>
 
-
 <!-- VALENTINE -->
 
 <div class="screen" id="valentineScreen">
 
-<button class="back" onclick="goBack()">⬅ Back</button>
+<div class="moon"></div>
+<div class="cloud"></div>
 
-<div class="valBox">
+<button class="back" onclick="goBackAnniv()">⬅ Back</button>
+
+<div class="valCard">
 
 <h1>Megha 💘</h1>
 <h2>Will You Be My Valentine?</h2>
 
 <div class="buttons">
+
 <button id="yes" onclick="yesClick()">Yes 😍</button>
 <button id="no" onmouseover="moveNo()">No 🙈</button>
-</div>
 
 </div>
 
 </div>
 
+</div>
 
 <!-- RESPONSE -->
 
@@ -302,9 +350,11 @@ and for every beautiful moment ahead. ❤️
 
 <div class="resBox">
 
-<h1>I Knew It!!! 😍💖</h1>
+<button class="back" onclick="goBackVal()">⬅ Back</button>
 
-<p>What do you want to do on Valentine’s?</p>
+<h1>I Knew It 😍💖</h1>
+
+<p>What would you like to do on Valentine’s?</p>
 
 <textarea id="msg"></textarea>
 
@@ -316,11 +366,12 @@ and for every beautiful moment ahead. ❤️
 
 </div>
 
-
 <script>
 
-const music = document.getElementById("music");
-const popup = document.getElementById("popup");
+const music=document.getElementById("music");
+const popup=document.getElementById("popup");
+const noBtn=document.getElementById("no");
+const container=document.querySelector(".buttons");
 
 const noTexts=[
 "Heyyy 😳",
@@ -331,8 +382,6 @@ const noTexts=[
 "Not allowed 😤❤️"
 ];
 
-/* Envelope */
-
 function openLetter(){
 document.querySelector(".envelope").style.display="none";
 document.querySelector(".envelopeText").style.display="none";
@@ -340,62 +389,41 @@ document.getElementById("letter").style.display="block";
 music.play();
 }
 
-/* Navigation */
-
 function goValentine(){
 document.getElementById("envelopeScreen").style.display="none";
 document.getElementById("valentineScreen").style.display="flex";
 }
 
-function goBack(){
+function goBackAnniv(){
 document.getElementById("valentineScreen").style.display="none";
 document.getElementById("envelopeScreen").style.display="flex";
 }
 
-/* Hearts */
-
-function spawnHeart(){
-const h=document.createElement("div");
-h.className="heart";
-h.innerHTML="💖";
-h.style.left=Math.random()*100+"%";
-h.style.animationDuration=(5+Math.random()*5)+"s";
-document.body.appendChild(h);
-
-setTimeout(()=>h.remove(),8000);
+function goBackVal(){
+document.getElementById("responseScreen").style.display="none";
+document.getElementById("valentineScreen").style.display="flex";
 }
-
-setInterval(spawnHeart,400);
-
-/* No Button */
 
 function moveNo(){
 
-const btn=document.getElementById("no");
+const area=container.getBoundingClientRect();
 
-const x=Math.random()*(window.innerWidth-120);
-const y=Math.random()*(window.innerHeight-120);
+const x=Math.random()*(area.width-80);
+const y=Math.random()*(area.height-40);
 
-btn.style.left=x+"px";
-btn.style.top=y+"px";
+noBtn.style.left=x+"px";
+noBtn.style.top=y+"px";
 
-const msg=noTexts[Math.floor(Math.random()*noTexts.length)];
-showPopup(msg);
+showPopup(noTexts[Math.floor(Math.random()*noTexts.length)]);
 }
 
 function showPopup(t){
 popup.innerText=t;
 popup.style.display="block";
-
-setTimeout(()=>{
-popup.style.display="none";
-},1200);
+setTimeout(()=>popup.style.display="none",1200);
 }
 
-/* Yes */
-
 function yesClick(){
-
 showPopup("I knew it!!! 💖😍");
 
 setTimeout(()=>{
@@ -403,8 +431,6 @@ document.getElementById("valentineScreen").style.display="none";
 document.getElementById("responseScreen").style.display="flex";
 },1200);
 }
-
-/* Send */
 
 function sendMsg(){
 
