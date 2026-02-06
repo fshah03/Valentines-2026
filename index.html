@@ -1,277 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <title>For Megha 💖</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins&display=swap" rel="stylesheet">
 
 <style>
-
-/* RESET */
 *{margin:0;padding:0;box-sizing:border-box;font-family:Poppins}
-body{background:#020024;color:white;overflow:hidden}
+body{background:black;color:white;overflow:hidden}
 
-/* GLOBAL */
 .screen{
-position:absolute;
-top:0;left:0;
 width:100vw;height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-transition:opacity .8s;
+display:flex;justify-content:center;align-items:center;
+position:absolute;top:0;left:0;
 }
 
-.hidden{opacity:0;pointer-events:none}
+.hidden{display:none}
 
-/* BACKGROUND STARS */
-.stars{
-position:fixed;
-width:100%;
-height:100%;
-background:
+/* STARS */
+.stars{position:fixed;width:100%;height:100%;background:
 radial-gradient(2px 2px at 20% 30%,white,transparent),
 radial-gradient(2px 2px at 80% 40%,white,transparent),
-radial-gradient(1px 1px at 60% 70%,white,transparent),
-radial-gradient(1px 1px at 10% 90%,white,transparent);
-background-size:200px 200px;
-animation:stars 90s linear infinite;
-z-index:-2;
-}
-@keyframes stars{
-from{background-position:0 0}
-to{background-position:3000px 3000px}
-}
-
-/* FLOATING HEARTS */
-.heart{
-position:fixed;
-bottom:-20px;
-font-size:20px;
-color:pink;
-animation:float 10s linear infinite;
-opacity:.8;
-}
-
-@keyframes float{
-from{transform:translateY(0);opacity:1}
-to{transform:translateY(-110vh);opacity:0}
-}
-
-/* BUTTONS */
-button{
-padding:12px 30px;
-border:none;
-border-radius:30px;
-font-size:18px;
-cursor:pointer;
-transition:.3s;
-}
-
-button:hover{transform:scale(1.05)}
-
-.nextBtn{background:gold;color:black}
-
-.backBtn{
-position:absolute;
-top:20px;left:20px;
-background:none;
-color:white;
-font-size:18px;
-}
+radial-gradient(1px 1px at 60% 70%,white,transparent);
+background-size:200px 200px;animation:stars 80s linear infinite;z-index:-1}
+@keyframes stars{from{background-position:0 0}to{background-position:2000px 2000px}}
 
 /* MUSIC */
 audio{display:none}
 
+/* BUTTONS */
+button{padding:12px 28px;border:none;border-radius:30px;font-size:18px;cursor:pointer}
+.nextBtn{background:gold;color:black}
+.backBtn{position:absolute;top:20px;left:20px;background:none;color:white;font-size:18px}
+
 /* ================= ANNIVERSARY ================= */
+#anniv{background:linear-gradient(135deg,#12002f,#3a0ca3,#7209b7)}
 
-#anniv{
-background:linear-gradient(135deg,#12002f,#3a0ca3,#7209b7);
-}
+.envelope{width:350px;height:230px;background:#f7e7b4;border-radius:15px;box-shadow:0 0 40px gold;cursor:pointer;position:relative}
+.envelope:before{content:"";position:absolute;width:100%;height:100%;background:#e6c87a;clip-path:polygon(0 0,100% 0,50% 60%)}
 
-.envelope{
-width:380px;height:240px;
-background:#f7e7b4;
-border-radius:15px;
-box-shadow:0 0 50px gold;
-cursor:pointer;
-position:relative;
-}
+#letter{display:none;background:rgba(0,0,0,.8);border:3px solid gold;border-radius:30px;padding:50px;max-width:800px;box-shadow:0 0 60px gold;text-align:center;animation:open 1.5s}
 
-.envelope:before{
-content:'';
-position:absolute;
-width:100%;height:100%;
-background:#e6c87a;
-clip-path:polygon(0 0,100% 0,50% 60%);
-}
+@keyframes open{from{transform:scale(.3);opacity:0}to{transform:scale(1);opacity:1}}
 
-.openText{
-margin-top:15px;
-opacity:.9;
-font-size:18px;
-}
-
-#letter{
-display:none;
-background:rgba(0,0,0,.8);
-border:3px solid gold;
-border-radius:30px;
-padding:50px;
-max-width:850px;
-text-align:center;
-animation:open 1.5s;
-box-shadow:0 0 60px gold;
-}
-
-@keyframes open{
-from{transform:scale(.3);opacity:0}
-to{transform:scale(1);opacity:1}
-}
-
-#letter h1{
-font-family:Great Vibes;
-font-size:70px;
-color:gold;
-}
-
-#letter img{
-width:220px;height:220px;
-border-radius:50%;
-border:5px solid gold;
-object-fit:cover;
-margin:20px;
-}
+#letter h1{font-family:Great Vibes;font-size:70px;color:gold}
+#letter img{width:220px;height:220px;border-radius:50%;border:5px solid gold;object-fit:cover;margin:20px}
 
 /* ================= ALBUM ================= */
+#album{background:linear-gradient(135deg,#050b2c,#1b1464,#3a0ca3)}
 
-#album{
-background:linear-gradient(135deg,#050b2c,#1b1464,#3a0ca3);
-}
+.albumBox{width:90%;max-width:1100px;text-align:center}
 
-.albumBox{
-width:90%;
-max-width:1000px;
-text-align:center;
-}
+.slider{display:flex;overflow:hidden;border-radius:25px;box-shadow:0 0 40px hotpink}
 
-.slider{
-overflow:hidden;
-border-radius:25px;
-box-shadow:0 0 40px hotpink;
-}
-
-.slides{
-display:flex;
-transition:.8s ease;
-}
-
-.slide{
-min-width:100%;
-position:relative;
-}
+.slide{min-width:100%;position:relative}
 
 .slide img{
 width:100%;
 height:500px;
-object-fit:contain;
+object-fit:contain; /* FIX: no crop */
 background:black;
 }
 
-.caption{
-position:absolute;
-bottom:0;width:100%;
-background:rgba(0,0,0,.6);
-padding:10px;
-}
+.caption{position:absolute;bottom:15px;width:100%;text-align:center;background:rgba(0,0,0,.6);padding:10px}
 
 .controls{margin-top:20px}
 
 /* ================= VALENTINE ================= */
+#valentine{background:linear-gradient(135deg,#020024,#090979,#3a0ca3)}
 
-#valentine{
-background:linear-gradient(135deg,#020024,#090979,#3a0ca3);
-}
-
-.moon{
-position:absolute;
-top:8%;right:10%;
-width:120px;height:120px;
-border-radius:50%;
-background:radial-gradient(circle,#fff,#ddd);
-box-shadow:0 0 40px white;
-}
+.moon{position:absolute;top:8%;right:12%;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,#fff,#ddd);box-shadow:0 0 40px white}
 
 .valBox{
-width:90%;
-max-width:900px;
+width:90%;max-width:900px;
 background:rgba(255,255,255,.12);
 backdrop-filter:blur(20px);
 border-radius:40px;
 padding:60px;
 text-align:center;
-box-shadow:0 0 60px rgba(255,105,180,.7);
+box-shadow:0 0 60px rgba(255,105,180,.7)
 }
 
-.buttons{
-margin-top:40px;
-position:relative;
-height:100px;
-width:400px;
-margin:auto;
-}
+.buttons{margin-top:40px;position:relative;height:80px}
 
-#yes{
-background:#4CAF50;color:white;
-position:absolute;left:0;top:20px;
-}
-
-#no{
-background:#f44336;color:white;
-position:absolute;right:0;top:20px;
-}
+#yes{background:#4CAF50;color:white}
+#no{background:#f44336;color:white;position:absolute;right:0;top:0}
 
 /* ================= RESPONSE ================= */
+#response{background:linear-gradient(135deg,#1b1464,#7209b7,#f72585)}
 
-#response{
-background:linear-gradient(135deg,#1b1464,#7209b7,#f72585);
-}
-
-.resBox{
-width:90%;
-max-width:700px;
-background:rgba(0,0,0,.7);
-padding:50px;
-border-radius:35px;
-text-align:left;
-}
+.resBox{width:90%;max-width:700px;background:rgba(0,0,0,.7);padding:50px;border-radius:35px;text-align:left}
 
 .option{margin:10px 0}
 
-textarea{
-width:100%;
-height:100px;
-border-radius:10px;
-padding:10px;
-margin-top:10px;
-}
+textarea{width:100%;height:100px;border-radius:10px;padding:10px;margin-top:10px}
 
-.send{background:gold;color:black;font-weight:bold}
+.send{background:gold;color:black;font-weight:bold;margin-top:20px}
 
-/* POPUP */
-
-#popup{
-position:fixed;
-top:15%;left:50%;
-transform:translateX(-50%);
-background:rgba(0,0,0,.8);
-padding:15px 25px;
-border-radius:20px;
-display:none;
-z-index:99;
-}
+#popup{position:fixed;top:15%;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.8);padding:15px 25px;border-radius:20px;display:none}
 
 </style>
 </head>
@@ -288,41 +114,37 @@ z-index:99;
 
 <!-- ANNIVERSARY -->
 <div class="screen" id="anniv">
-
 <div class="envelope" onclick="openLetter()"></div>
-<div class="openText">Open With Love 💖</div>
 
 <div id="letter">
-
 <h1>Happy 1st Anniversary ❤️</h1>
-
 <img src="photo.jpg">
-
 <p>
 My dearest Megha 💖,<br><br>
-Every moment with you is my favorite memory.
-You are my forever and always. 💍✨<br><br>
-Happy Anniversary, my love ❤️
+From the moment you came into my life, everything became brighter,
+softer, and more beautiful. Every smile of yours, every laugh,
+every little moment we share means the world to me. ❤️<br><br>
+This past year with you has been full of love, growth, memories,
+and countless blessings. Marrying you was the greatest gift
+of my life, and I’m grateful for you every single day. 💍✨<br><br>
+Thank you for being my best friend, my partner, my home,
+and my forever. I promise to keep loving you,
+cherishing you, and choosing you—always. 💖<br><br>
+Happy 1st Anniversary, my love ❤️
 </p>
-
 <br>
-
 <button class="nextBtn" onclick="goAlbum()">Our Memories 📸</button>
-
 </div>
 </div>
 
 <!-- ALBUM -->
 <div class="screen hidden" id="album">
-
-<button class="backBtn" onclick="goAnniv()">⬅ Back</button>
+<button class="backBtn" onclick="backToAnniv()">⬅ Back</button>
 
 <div class="albumBox">
-
 <h1>Our Beautiful Journey 💖</h1><br>
 
-<div class="slider">
-<div class="slides" id="slides">
+<div class="slider" id="slider">
 
 <div class="slide">
 <img src="photo1.jpg">
@@ -331,7 +153,7 @@ Happy Anniversary, my love ❤️
 
 <div class="slide">
 <img src="photo2.jpg">
-<div class="caption">When we got the keys for our house ❤️</div>
+<div class="caption">When we got the keys to our house ❤️</div>
 </div>
 
 <div class="slide">
@@ -340,36 +162,28 @@ Happy Anniversary, my love ❤️
 </div>
 
 </div>
-</div>
 
 <div class="controls">
 <button onclick="prev()">⬅</button>
 <button onclick="next()">➡</button>
 </div>
-
 <br>
 <button class="nextBtn" onclick="goValentine()">To Valentine 💘</button>
-
 </div>
 </div>
 
 <!-- VALENTINE -->
 <div class="screen hidden" id="valentine">
-
 <div class="moon"></div>
-
 <button class="backBtn" onclick="backToAlbum()">⬅ Back</button>
 
 <div class="valBox">
-
 <h1>Megha 💘</h1>
 <h2>Will You Be My Valentine?</h2>
 
 <div class="buttons" id="btnArea">
-
 <button id="yes" onclick="yesClick()">Yes 😍</button>
 <button id="no" onmouseover="moveNo()">No 🙈</button>
-
 </div>
 </div>
 </div>
@@ -380,134 +194,101 @@ Happy Anniversary, my love ❤️
 <button class="backBtn" onclick="backToVal()">⬅ Back</button>
 
 <div class="resBox">
-
 <h2>What Should We Do? 💖</h2>
 
 <div class="option"><input type="checkbox"> Romantic Candlelight Dinner 🌹</div>
 <div class="option"><input type="checkbox"> Movie Night + Cuddles 🎬❤️</div>
 <div class="option"><input type="checkbox"> Long Drive + Music 🚗🎶</div>
-<div class="option"><input type="checkbox"> Surprise Date 😏</div>
-<div class="option"><input type="checkbox"> Stay In + Food 🍕</div>
+<div class="option"><input type="checkbox"> Surprise Date Planned By You 😏</div>
+<div class="option"><input type="checkbox"> Stay In & Order Food 🛋️🍕</div>
 <div class="option"><input type="checkbox"> All Of The Above 💯💖</div>
 
-<p>Add anything else 😘</p>
-
+<p>Add anything else you want, my love 😘</p>
 <textarea id="msg"></textarea>
 
-<br>
-
-<button class="send" onclick="sendMsg()">Send 💌</button>
-
+<button class="send" onclick="sendMsg()">Send To Me 💌</button>
 </div>
 </div>
 
 <script>
 
-/* HEARTS */
-setInterval(()=>{
-const h=document.createElement('div');
-h.className='heart';
-h.innerHTML='❤️';
-h.style.left=Math.random()*100+'vw';
-h.style.fontSize=15+Math.random()*25+'px';
-document.body.appendChild(h);
+const music=document.getElementById("music");
+const popup=document.getElementById("popup");
 
-setTimeout(()=>h.remove(),10000);
-},500);
+let index=0;
+const slides=document.querySelectorAll(".slide");
 
-/* GLOBAL */
-const music=document.getElementById('music');
-const popup=document.getElementById('popup');
+const noBtn=document.getElementById("no");
+const area=document.getElementById("btnArea");
 
-/* ANNIV */
+const texts=["Nice try 😏","Come on 🥺","You love me ❤️","Not allowed 😤💖","Hehe nope 😘"];
+
 function openLetter(){
 document.querySelector('.envelope').style.display='none';
-document.querySelector('.openText').style.display='none';
 document.getElementById('letter').style.display='block';
 music.play();
 }
 
-/* NAV */
-function show(a,b){
+function goAlbum(){switchScreen('anniv','album')}
+function goValentine(){switchScreen('album','valentine')}
+
+function backToAnniv(){switchScreen('album','anniv')}
+function backToAlbum(){switchScreen('valentine','album')}
+function backToVal(){switchScreen('response','valentine')}
+
+function switchScreen(a,b){
 document.getElementById(a).classList.add('hidden');
 document.getElementById(b).classList.remove('hidden');
 }
 
-function goAlbum(){show('anniv','album')}
-function goAnniv(){show('album','anniv')}
-function goValentine(){show('album','valentine')}
-function backToAlbum(){show('valentine','album')}
-function backToVal(){show('response','valentine')}
-
-/* SLIDER */
-let idx=0;
-const slides=document.getElementById('slides');
-
-function update(){
-slides.style.transform=`translateX(${-idx*100}%)`;
+function show(){
+document.getElementById('slider').style.transform=`translateX(${-index*100}%)`;
 }
 
-function next(){
-idx=(idx+1)%3;
-update();
-}
-
-function prev(){
-idx=(idx-1+3)%3;
-update();
-}
-
-/* NO BUTTON */
-const noBtn=document.getElementById('no');
-const area=document.getElementById('btnArea');
-
-const texts=[
-'Nice try 😏',
-'Come on 🥺',
-'You love me ❤️',
-'Not allowed 😤💖',
-'Hehe nope 😘',
-'Almost 😜'
-];
+function next(){index=(index+1)%slides.length;show()}
+function prev(){index=(index-1+slides.length)%slides.length;show()}
 
 function moveNo(){
 
 const r=area.getBoundingClientRect();
 
-const x=Math.random()*(r.width-100);
-const y=Math.random()*(r.height-60);
+// Get mouse position relative to button area
+const areaX = r.left;
+const areaY = r.top;
 
-noBtn.style.left=x+'px';
-noBtn.style.top=y+'px';
+let x = Math.random() * (r.width - noBtn.offsetWidth);
+let y = Math.random() * (r.height - noBtn.offsetHeight);
 
-showPopup(texts[Math.floor(Math.random()*texts.length)]);
+// Keep button away from YES button (left side)
+if(x < 120){
+  x = r.width - 120;
 }
 
-/* POPUP */
+noBtn.style.transition = 'left .2s, top .2s';
+noBtn.style.left = x + 'px';
+noBtn.style.top = y + 'px';
+
+showPopup(texts[Math.floor(Math.random()*texts.length)]);
+
+}
+
 function showPopup(t){
 popup.innerText=t;
 popup.style.display='block';
 setTimeout(()=>popup.style.display='none',1000);
 }
 
-/* YES */
 function yesClick(){
-showPopup('I knew it!!! 😍💖');
-setTimeout(()=>show('valentine','response'),1200);
+showPopup("I knew it!!! 😍💖");
+setTimeout(()=>switchScreen('valentine','response'),1200);
 }
 
-/* SEND */
 function sendMsg(){
-
 const t=document.getElementById('msg').value;
-
-if(!t.trim()){
-alert('Write something ❤️');
-return;
-}
+if(!t.trim()){alert('Write something ❤️');return}
 
 window.location.href=
-'mailto:fiyuusa@gmail.com?subject=Valentine From Megha 💖&body='+
+"mailto:fiyuusa@gmail.com?subject=Valentine From Megha 💖&body="+
 encodeURIComponent(t);
 }
 
