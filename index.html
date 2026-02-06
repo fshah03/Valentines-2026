@@ -4,352 +4,174 @@
 <meta charset="UTF-8">
 <title>For Megha ❤️</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins&display=swap" rel="stylesheet">
-
 <style>
-
 *{margin:0;padding:0;box-sizing:border-box;font-family:Poppins}
-
-body{
-background:linear-gradient(120deg,#12002f,#400040,#ff69b4);
-color:white;
-overflow:hidden;
-height:100vh;
-}
-
-/* ---------- HEARTS ---------- */
-
-.heart{
-position:fixed;
-bottom:-20px;
-color:pink;
-font-size:20px;
-animation:float 6s linear infinite;
-opacity:.8;
-}
-
-@keyframes float{
-0%{transform:translateY(0) scale(1)}
-100%{transform:translateY(-120vh) scale(.3)}
-}
-
-/* ---------- PAGES ---------- */
-
-.page{
-position:absolute;
-width:100%;
-height:100%;
-display:none;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-text-align:center;
-padding:40px;
-}
-
+body{background:linear-gradient(120deg,#12002f,#400040,#ff69b4);color:white;overflow:hidden;height:100vh;}
+/* HEARTS */
+.heart{position:fixed;bottom:-20px;color:pink;font-size:20px;animation:float 6s linear infinite;opacity:.8;}
+@keyframes float{0%{transform:translateY(0) scale(1)}100%{transform:translateY(-120vh) scale(.3)}}
+/* PAGES */
+.page{position:absolute;width:100%;height:100%;display:none;justify-content:center;align-items:center;flex-direction:column;text-align:center;padding:40px;}
 .active{display:flex}
-
-/* ---------- ENVELOPE ---------- */
-
-#envelope{
-background:rgba(255,255,255,.1);
-padding:60px;
-border-radius:25px;
-box-shadow:0 0 40px pink;
-animation:pulse 2s infinite;
-}
-
-@keyframes pulse{
-0%,100%{transform:scale(1)}
-50%{transform:scale(1.05)}
-}
-
-button{
-background:linear-gradient(45deg,#ff69b4,#ff1493);
-border:none;
-padding:15px 35px;
-border-radius:30px;
-font-size:18px;
-color:white;
-cursor:pointer;
-margin:15px;
-transition:.3s;
-}
-
+/* ENVELOPE */
+#envelope{background:rgba(255,255,255,.1);padding:60px;border-radius:25px;box-shadow:0 0 40px pink;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+button{background:linear-gradient(45deg,#ff69b4,#ff1493);border:none;padding:15px 35px;border-radius:30px;font-size:18px;color:white;cursor:pointer;margin:15px;transition:.3s;}
 button:hover{transform:scale(1.1)}
+/* LETTER */
+#letter{max-width:800px;background:rgba(0,0,0,.5);padding:50px;border-radius:25px;box-shadow:0 0 40px gold;}
+#letter h1{font-family:Great Vibes;font-size:60px;margin-bottom:20px;}
+#letter img{width:220px;height:220px;border-radius:50%;border:5px solid gold;object-fit:cover;margin:20px;}
 
-/* ---------- LETTER ---------- */
+/* ALBUM */
+#album{width:90%;max-width:900px;background:rgba(0,0,0,.6);padding:40px;border-radius:25px;}
+#photo{width:100%;height:400px;object-fit:contain;border-radius:20px;background:black;}
+#caption{margin-top:15px;font-size:18px;}
 
-#letter{
-max-width:800px;
-background:rgba(0,0,0,.5);
-padding:50px;
-border-radius:25px;
-box-shadow:0 0 40px gold;
-}
+/* VALENTINE */
+#valentine{width:100%;height:100%;background:linear-gradient(135deg,#ff1493,#ff69b4,#ffc0cb);display:flex;justify-content:center;align-items:center;flex-direction:column;}
+#buttons{position:relative;height:150px;width:400px;}
 
-#letter h1{
-font-family:Great Vibes;
-font-size:60px;
-margin-bottom:20px;
-}
+/* FORM */
+#form{background:rgba(0,0,0,.6);padding:40px;border-radius:25px;width:90%;max-width:600px;}
+input[type=checkbox]{margin-right:10px;}
+textarea{width:100%;padding:10px;margin:10px 0;border-radius:10px;border:none;}
 
-/* ---------- ALBUM ---------- */
-
-#album{
-width:90%;
-max-width:900px;
-background:rgba(0,0,0,.6);
-padding:40px;
-border-radius:25px;
-}
-
-#photo{
-width:100%;
-height:400px;
-object-fit:contain;
-border-radius:20px;
-background:black;
-}
-
-#caption{margin-top:15px;font-size:18px}
-
-/* ---------- VALENTINE ---------- */
-
-#valentine{
-width:100%;
-height:100%;
-background:linear-gradient(135deg,#ff1493,#ff69b4,#ffc0cb);
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-}
-
-#buttons{
-position:relative;
-height:150px;
-width:400px;
-}
-
-/* ---------- FORM ---------- */
-
-#form{
-background:rgba(0,0,0,.6);
-padding:40px;
-border-radius:25px;
-width:90%;
-max-width:600px;
-}
-
-input,textarea{
-width:100%;
-padding:10px;
-margin:10px 0;
-border-radius:10px;
-border:none;
-}
-
+.backBtn{background:none;color:white;font-size:18px;position:absolute;top:20px;left:20px;cursor:pointer;}
 </style>
 </head>
-
 <body>
+
+<!-- MUSIC -->
+<audio id="music" loop>
+  <source src="love-song.mp3" type="audio/mp3">
+</audio>
 
 <!-- HEARTS -->
 <script>
 setInterval(()=>{
-const h=document.createElement("div")
-h.className="heart"
-h.innerHTML="❤️"
-h.style.left=Math.random()*100+"vw"
-h.style.fontSize=15+Math.random()*20+"px"
-document.body.appendChild(h)
-setTimeout(()=>h.remove(),6000)
+  const h=document.createElement("div")
+  h.className="heart"
+  h.innerHTML="❤️"
+  h.style.left=Math.random()*100+"vw"
+  h.style.fontSize=15+Math.random()*20+"px"
+  document.body.appendChild(h)
+  setTimeout(()=>h.remove(),6000)
 },300)
 </script>
 
-<!-- MUSIC -->
-<audio autoplay loop>
-<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5bd6bdfbb0.mp3" type="audio/mp3">
-</audio>
-
-<!-- PAGE 1 -->
+<!-- PAGE 1: Envelope -->
 <div class="page active" id="p1">
-<div id="envelope">
-<h1 style="font-family:Great Vibes;font-size:50px">Happy Anniversary Megha ❤️</h1>
-<p>Open with Love</p>
-<button onclick="go(2)">Open 💌</button>
-</div>
+  <div id="envelope">
+    <h1 style="font-family:Great Vibes;font-size:50px">Happy Anniversary Megha ❤️</h1>
+    <p>Open With Love 💌</p>
+    <button onclick="go(2)">Open 💌</button>
+  </div>
 </div>
 
-<!-- PAGE 2 -->
+<!-- PAGE 2: Letter -->
 <div class="page" id="p2">
-<div id="letter">
-<h1>My Love</h1>
-
-<p>
-One year ago, I married my best friend…  
-My safe place…  
-My forever person.
-<br><br>
-Every smile of yours heals me.  
-Every hug gives me strength.  
-Every moment with you feels magical.
-<br><br>
-Our journey is my greatest blessing.
-I promise to love you harder every day.
-<br><br>
-Happy First Anniversary, Megha ❤️
-</p>
-
-<button onclick="go(3)">Our Memories 📸</button>
-</div>
+  <div id="letter">
+    <img src="photo.jpg" alt="Us">
+    <h1>My Love</h1>
+    <p>
+      One year ago, I married my best friend…<br>
+      My safe place…<br>
+      My forever person.<br><br>
+      Every smile of yours heals me.<br>
+      Every hug gives me strength.<br>
+      Every moment with you feels magical.<br><br>
+      Our journey is my greatest blessing.<br>
+      I promise to love you harder every day.<br><br>
+      Happy First Anniversary, Megha ❤️
+    </p>
+    <button onclick="go(3)">Our Memories 📸</button>
+  </div>
 </div>
 
-<!-- PAGE 3 -->
+<!-- PAGE 3: Photo Album -->
 <div class="page" id="p3">
-<div id="album">
-
-<img id="photo" src="photo1.jpg">
-
-<div id="caption"></div>
-
-<br>
-
-<button onclick="prev()">⬅ Back</button>
-<button onclick="next()">Next ➡</button>
-
-<br><br>
-
-<button onclick="go(4)">Valentine 💘</button>
-
-</div>
+  <button class="backBtn" onclick="go(2)">⬅ Back to Letter</button>
+  <div id="album">
+    <img id="photo" src="photo1.jpg">
+    <div id="caption"></div>
+    <br>
+    <button onclick="prev()">⬅ Prev</button>
+    <button onclick="next()">Next ➡</button>
+    <br><br>
+    <button onclick="go(4)">Valentine 💘</button>
+  </div>
 </div>
 
-<!-- PAGE 4 -->
+<!-- PAGE 4: Valentine Proposal -->
 <div class="page" id="p4">
-<div id="valentine">
-
-<h1 style="font-family:Great Vibes;font-size:60px">
-Will You Be My Valentine? 💖
-</h1>
-
-<div id="buttons">
-
-<button id="yes" onclick="go(5)">YES 😍</button>
-
-<button id="no">NO 🙈</button>
-
+  <button class="backBtn" onclick="go(3)">⬅ Back to Album</button>
+  <div id="valentine">
+    <h1 style="font-family:Great Vibes;font-size:60px">Will You Be My Valentine? 💖</h1>
+    <div id="buttons">
+      <button id="yes" onclick="go(5)">YES 😍</button>
+      <button id="no">NO 🙈</button>
+    </div>
+    <p id="msg"></p>
+  </div>
 </div>
 
-<p id="msg"></p>
-
-<button onclick="go(3)">⬅ Back</button>
-
-</div>
-</div>
-
-<!-- PAGE 5 -->
+<!-- PAGE 5: Response Form -->
 <div class="page" id="p5">
-
-<div id="form">
-
-<h2>Our Valentine Plan 💝</h2>
-
-<form action="https://formsubmit.co/fiyuusa@gmail.com" method="POST">
-
-<label><input type="checkbox" name="plan" value="Dinner"> Romantic Dinner 🍽️</label><br>
-
-<label><input type="checkbox" name="plan" value="Movie"> Movie Night 🎬</label><br>
-
-<label><input type="checkbox" name="plan" value="Trip"> Weekend Trip 🚗</label><br>
-
-<label><input type="checkbox" name="plan" value="All"> All Of Above 💯</label><br>
-
-<textarea name="extra" placeholder="Anything else you want, my love? 💕"></textarea>
-
-<input type="hidden" name="_subject" value="Valentine Response from Megha">
-
-<button type="submit">Send ❤️</button>
-
-</form>
-
-<button onclick="go(4)">⬅ Back</button>
-
-</div>
-
+  <button class="backBtn" onclick="go(4)">⬅ Back to Valentine</button>
+  <div id="form">
+    <h2>Our Valentine Plan 💝</h2>
+    <form action="https://formsubmit.co/fiyuusa@gmail.com" method="POST">
+      <label style="display:flex;align-items:center;"><input type="checkbox" name="plan" value="Dinner"> Romantic Dinner 🍽️</label>
+      <label style="display:flex;align-items:center;"><input type="checkbox" name="plan" value="Movie"> Movie Night 🎬</label>
+      <label style="display:flex;align-items:center;"><input type="checkbox" name="plan" value="Trip"> Weekend Trip 🚗</label>
+      <label style="display:flex;align-items:center;"><input type="checkbox" name="plan" value="All"> All Of Above 💯</label>
+      <textarea name="extra" placeholder="Anything else you want, my love? 💕"></textarea>
+      <input type="hidden" name="_subject" value="Valentine Response from Megha">
+      <button type="submit">Send ❤️</button>
+    </form>
+  </div>
 </div>
 
 <script>
-
 /* PAGE NAV */
-
+const music=document.getElementById("music")
 function go(n){
-document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"))
-document.getElementById("p"+n).classList.add("active")
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"))
+  document.getElementById("p"+n).classList.add("active")
+  if(n===2) music.play()
 }
 
-/* ALBUM */
-
-const photos=[
-"photo1.jpg",
-"photo2.jpg",
-"photo3.jpg"
-]
-
+/* PHOTO ALBUM */
+const photos=["photo1.jpg","photo2.jpg","photo3.jpg"]
 const caps=[
 "Our first crazy selfie where we felt close ❤️",
-"When we got the keys to our house ❤️",
+"When we got the keys for our house ❤️",
 "When we got married with our loved ones 💕"
 ]
-
 let i=0
-
 function show(){
-photo.src=photos[i]
-caption.innerText=caps[i]
+  document.getElementById("photo").src=photos[i]
+  document.getElementById("caption").innerText=caps[i]
 }
-
-function next(){
-i=(i+1)%3
-show()
-}
-
-function prev(){
-i=(i+2)%3
-show()
-}
-
+function next(){i=(i+1)%3; show()}
+function prev(){i=(i+2)%3; show()}
 show()
 
 /* NO BUTTON */
-
 const no=document.getElementById("no")
 const msg=document.getElementById("msg")
-
-const texts=[
-"I'm shy 🙈",
-"Catch me first 😜",
-"Not so easy 😏",
-"You love me 😍",
-"Try harder 😂"
-]
-
-no.addEventListener("mouseover",()=>{
-
-const x=Math.random()*250
-const y=Math.random()*100
-
-no.style.position="absolute"
-no.style.left=x+"px"
-no.style.top=y+"px"
-
-msg.innerText=texts[Math.floor(Math.random()*texts.length)]
-
+const texts=["I'm shy 🙈","Catch me first 😜","Not so easy 😏","You love me 😍","Try harder 😂"]
+no.addEventListener("mousemove",()=>{
+  const area=no.parentElement.getBoundingClientRect()
+  let x=Math.random()*(area.width - no.offsetWidth)
+  let y=Math.random()*(area.height - no.offsetHeight)
+  no.style.position="absolute"
+  no.style.left=x+"px"
+  no.style.top=y+"px"
+  msg.innerText=texts[Math.floor(Math.random()*texts.length)]
 })
-
 </script>
-
 </body>
 </html>
